@@ -1,10 +1,10 @@
-# caeser cipher
+#vigenere cipher
+
 
 text = 'Hello Zebra'
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
-shift = 3
+key = 'meowmeowmeow'
 
-def caeser_cipher(text, shift):
+def caeser_cipher(text, key):
     #encrypt
     final_message=''
     for char in text.lower():
@@ -12,9 +12,9 @@ def caeser_cipher(text, shift):
             final_message += char
 
         else:
-            index = alphabet.find(char)
-            new_index = (index+shift)%len(alphabet)
-            final_message += alphabet[new_index]
+            index = key.find(char)
+            new_index = (index+key)%len(key)
+            final_message += key[new_index]
 
     return final_message
         
@@ -22,4 +22,4 @@ def caeser_cipher(text, shift):
 
 
 
-print(caeser_cipher(text, shift))
+print(caeser_cipher(text, key))
