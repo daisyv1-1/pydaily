@@ -1,9 +1,11 @@
 def main():
-    card_number = '4929-1450-5013-0644'
+    card_number = '4829-1450-5013-0644'
     trcard =  str.maketrans({'-':'', ':':''})
     new_num = card_number.translate(trcard)
-    print(new_num)
-    verification(new_num)
+    if verification(new_num):
+        print("valid credit card number")
+    else:
+        print("invalid credit card number")
 
 def verification(card_valid):
     revcard = card_valid[::-1]
@@ -11,21 +13,21 @@ def verification(card_valid):
         oddnum = nums[::2]
         sum_odd = 0
         for digit in oddnum:
-            print(digit)
             sum_odd += int(digit)
-        print(sum_odd)
+        return sum_odd
     def sumeven(nums):
         evennum = nums[1::2]
         sum_even = 0
         for digit in evennum:
             number = int(digit)*2
-            print(digit)
             if number >= 10:
                 sum_even += (number//10) + (number % 10)
             else:
                 sum_even += number
-        print(sum_even)
-    total = sumodd(revcard)+sumeven(revcard)
-    print(total%10)
+        return sum_even
+    sum1 = sumodd(revcard)
+    sum2 = sumeven(revcard)
+    total = sum1 + sum2
+    return 0==total%10
 
 main()
